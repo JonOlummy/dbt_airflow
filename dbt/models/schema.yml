@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: rick_and_morty    
+    tables:
+      - name: characters
+      - name: locations

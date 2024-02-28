@@ -1,0 +1,32 @@
+FROM python:3.9 as base
+
+# System setup
+RUN apt-get update \
+  && apt-get dist-upgrade -y \
+  && apt-get install -y --no-install-recommends \
+    git \
+    ssh-client \
+    software-properties-common \
+    make \
+    build-essential \
+    ca-certificates \
+    libpq-dev \
+  && apt-get clean \
+  && rm -rf \
+    /var/lib/apt/lists/* \
+    /tmp/* \
+    /var/tmp/*
+
+# Update Python
+RUN python -m pip install --upgrade pip setuptools wheel --no-cache-dir
+
+# Set the working directory
+WORKDIR /opt/airflow/dbt
+
+##
+# dbt-postgres
+##
+FROM base as dbt-postgres
+
+# Install dbt for PostgreSQL
+RUN python -m pip install --no-cache-dir dbt-postgres==1.7.8

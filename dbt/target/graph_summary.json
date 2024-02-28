@@ -1,0 +1,1 @@
+{"_invocation_id": "0934f739-3cca-4af8-ae29-bb655860cde0", "linked": {"0": {"name": "source.raft_dbt.rick_and_morty.characters", "type": "source", "succ": [2]}, "1": {"name": "source.raft_dbt.rick_and_morty.locations", "type": "source", "succ": [2]}, "2": {"name": "model.raft_dbt.location_character_merge", "type": "model"}}}
